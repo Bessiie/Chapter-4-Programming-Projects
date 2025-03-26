@@ -10,41 +10,47 @@
 #include <iostream>
 #include <iomanip>
 
+//Main function for calculating shipping charges
 int main() {
 
+	//Varibles and array of rate charges per 500 miles
 	float weight, distance, shippingCharge;
 	float rate[] = {1.10, 2.20, 3.70, 4.80 };
 
+	//Input output for getting weight and distance
 	std::cout << "Enter weight of package:\n";
 	std::cin >> weight;
 	std::cout << "Enter distance shipped:\n";
 	std::cin >> distance;
 
+	//precision for decimals
+	std::cout << std::fixed << std::setprecision(2);
+
+	//Checks if distance is valid
 	if (distance > 0 && distance <= 3000) {
+	//Weight determine the shipping rate and outputs price
 		if (weight > 0 && weight <= 2) {
 			shippingCharge = (distance / 500) * rate[0];
-			std::setprecision(2);
 			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
 		}
 		else if (weight > 2 && weight <= 6) {
 			shippingCharge = (distance / 500) * rate[1];
-			std::setprecision(2);
 			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
 		}
 		else if (weight > 6 && weight <= 10) {
 			shippingCharge = (distance / 500) * rate[2];
-			std::setprecision(2);
 			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
 		}
 		else if (weight > 10 && weight <= 20) {
 			shippingCharge = (distance / 500) * rate[3];
-			std::setprecision(2);
 			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
 		}
+	//Output in case of invalid value
 		else {
 			std::cout << "Invalid weight or over weight" << std::endl;
 		}
 	}
+	//Output for invalid value
 	else {
 		std::cout << "Invalid Distance or distance too far" << std::endl;
 	}
