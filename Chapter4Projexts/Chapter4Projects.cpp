@@ -1,37 +1,53 @@
-//Write a program that asks the user to enter the month (letting the user enter an integer in the range of 1 through 12) and the year.
-//The program should then display the number of days in that month.
-//Determine whether the year is divisible by 100. If it is, then it is a leap year if and only if it is divisible by 400.
-//If the year is not divisible by 100, then it is a leap year if and only if it is divisible by 4.
+//Input Validation: Do not accept values 0 or less for the weight of the package.
+//Do not accept weights of more than 20 kg (this is the maximum weight the company will ship).
+//Do not accept distances of less than 10 miles or more than 3,000 miles.
+//Weight of package in kg	|Rate per 500 miles shipped
+//0 < x <= 2kg				|$1.10
+//2kg < x <= 6kg			|$2.20
+//6kg < x <= 10kg			|$3.70
+//10kg < x <= 20kg			|$4.80
 
 #include <iostream>
+#include <iomanip>
 
-//Checks if leap year or not
-bool isLeapYear(int year) {
-	return (year % 400 == 0 || year % 100 != 0 && year % 4 == 0);
-}
-
-//Main function for determining days in a month
 int main() {
-	
-	//Variables
-	int month, year;
-	
-	//Array of days in a month
-	int daysInAMonth[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
 
-	//Asks user for month and year value
-		std::cout << "Enter a month (1-12):\n";
-		std::cin >> month;
-		std::cout << "Enter a year:\n";
-		std::cin >> year;
+	float weight, distance, shippingCharge;
+	float rate[] = {1.10, 2.20, 3.70, 4.80 };
 
-	//Checks if month is Feburary and if it is a leap year
-		if (month == 2 && isLeapYear(year) == true) {
-			std::cout << daysInAMonth[month - 1] + 1 << std::endl;
+	std::cout << "Enter weight of package:\n";
+	std::cin >> weight;
+	std::cout << "Enter distance shipped:\n";
+	std::cin >> distance;
+
+	if (distance > 0 && distance <= 3000) {
+		if (weight > 0 && weight <= 2) {
+			shippingCharge = (distance / 500) * rate[0];
+			std::setprecision(2);
+			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
 		}
-	//if not leap year then output not leap year values
+		else if (weight > 2 && weight <= 6) {
+			shippingCharge = (distance / 500) * rate[1];
+			std::setprecision(2);
+			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
+		}
+		else if (weight > 6 && weight <= 10) {
+			shippingCharge = (distance / 500) * rate[2];
+			std::setprecision(2);
+			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
+		}
+		else if (weight > 10 && weight <= 20) {
+			shippingCharge = (distance / 500) * rate[3];
+			std::setprecision(2);
+			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
+		}
 		else {
-			std::cout << daysInAMonth[month - 1] << std::endl;
+			std::cout << "Invalid weight or over weight" << std::endl;
 		}
+	}
+	else {
+		std::cout << "Invalid Distance or distance too far" << std::endl;
+	}
+
 	return 0;
 }
