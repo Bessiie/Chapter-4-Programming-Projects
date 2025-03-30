@@ -7,7 +7,7 @@
 
 //Checks if leap year or not
 bool isLeapYear(int year) {
-	return (year % 400 == 0 || year % 100 != 0 && year % 4 == 0);
+	return (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0));
 }
 
 //Main function for determining days in a month
