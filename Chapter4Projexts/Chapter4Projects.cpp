@@ -24,11 +24,17 @@ int main() {
 		std::cin >> month;
 		std::cout << "Enter a year:\n";
 		std::cin >> year;
+	
+	//Error for invalid month
+		if (month < 0 || month > 12) {
+			std::cout << "Invalid Month.";
+		}
 
 	//Checks if month is Feburary and if it is a leap year
-		if (month == 2 && isLeapYear(year) == true) {
-			std::cout << daysInAMonth[month - 1] + 1 << std::endl;
+		if (month == 2 && isLeapYear(year)) {
+			std::cout << daysInAMonth[1] + 1 << std::endl;
 		}
+
 	//if not leap year then output not leap year values
 		else {
 			std::cout << daysInAMonth[month - 1] << std::endl;
