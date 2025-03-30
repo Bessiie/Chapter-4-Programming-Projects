@@ -26,33 +26,30 @@ int main() {
 	//precision for decimals
 	std::cout << std::fixed << std::setprecision(2);
 
-	//Checks if distance is valid
-	if (distance > 0 && distance <= 3000) {
-	//Weight determine the shipping rate and outputs price
-		if (weight > 0 && weight <= 2) {
-			shippingCharge = (distance / 500) * rate[0];
-			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
-		}
-		else if (weight > 2 && weight <= 6) {
-			shippingCharge = (distance / 500) * rate[1];
-			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
-		}
-		else if (weight > 6 && weight <= 10) {
-			shippingCharge = (distance / 500) * rate[2];
-			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
-		}
-		else if (weight > 10 && weight <= 20) {
-			shippingCharge = (distance / 500) * rate[3];
-			std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
-		}
-	//Output in case of invalid value
-		else {
-			std::cout << "Invalid weight or over weight" << std::endl;
-		}
+	//Checks if distance or weight is valid
+	if (weight < 0 || weight > 20) {
+		std::cout << "Invalid weight or over weight" << std::endl;
+		return 1;
 	}
-	//Output for invalid value
-	else {
+
+	if (distance < 0 || distance > 3000) {
 		std::cout << "Invalid Distance or distance too far" << std::endl;
+		return 1;
+	}
+
+	//Weight determine the shipping rate and outputs price
+	if (weight > 0 && weight <= 2) {
+		shippingCharge = (distance / 500) * rate[0];
+		std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
+	} else if (weight > 2 && weight <= 6) {
+		shippingCharge = (distance / 500) * rate[1];
+		std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
+	} else if (weight > 6 && weight <= 10) {
+		shippingCharge = (distance / 500) * rate[2];
+		std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
+	} else if (weight > 10 && weight <= 20) {
+		shippingCharge = (distance / 500) * rate[3];
+		std::cout << "The price to ship this item is : $" << shippingCharge << std::endl;
 	}
 
 	return 0;
