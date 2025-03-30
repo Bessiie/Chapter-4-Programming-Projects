@@ -28,16 +28,17 @@ int main() {
 	//Error for invalid month
 		if (month < 0 || month > 12) {
 			std::cout << "Invalid Month.";
+			return 1;
 		}
 
 	//Checks if month is Feburary and if it is a leap year
 		if (month == 2 && isLeapYear(year)) {
-			std::cout << daysInAMonth[1] + 1 << std::endl;
+			std::cout << daysInAMonth[1] + 1 << " days" << std::endl;
 		}
 
 	//if not leap year then output not leap year values
 		else {
-			std::cout << daysInAMonth[month - 1] << std::endl;
+			std::cout << daysInAMonth[month - 1] << " days" << std::endl;
 		}
 	return 0;
 }
